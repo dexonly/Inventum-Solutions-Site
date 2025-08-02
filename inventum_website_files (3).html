@@ -1,0 +1,114 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventum Strategies</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        :root {
+            --brand-dark: #0e1d1e;
+            --brand-green: #2ecc71;
+        }
+        body {
+            margin: 0;
+            padding-top: 70px; /* Reserve space for fixed navbar */
+        }
+        .navbar {
+            background-color: var(--brand-dark);
+        }
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        .hero-section {
+            background: linear-gradient(135deg, var(--brand-dark), #1b4d4d);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            border-radius: 0 0 12px 12px;
+        }
+        .hero-section h1 {
+            font-size: 2.75rem;
+            font-weight: 700;
+        }
+        .hero-section p {
+            font-size: 1.25rem;
+            margin-top: 1rem;
+        }
+        .fixed-top {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1030;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">Inventum Strategies</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                <li class="nav-item"><a class="nav-link" href="industries.html">Industries</a></li>
+                <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <h1>Outsource Smarter. Scale Faster.</h1>
+        <p>Industry-grade inbound customer service and qualified lead generation for growing businesses.</p>
+        <a href="services.html" class="btn btn-light mt-3">Explore Our Services</a>
+    </div>
+</section>
+
+<!-- About Section -->
+<div class="container my-5">
+    <h2>About Us</h2>
+    <p>Inventum Strategies specializes in providing exceptional outsourced customer service and lead generation solutions. We help businesses across various industries manage customer interactions effectively and grow their client base efficiently.</p>
+</div>
+
+<!-- Services Section -->
+<div class="container my-5">
+    <h2>Our Services</h2>
+    <ul>
+        <li>Inbound Customer Service: 24/7 support, appointment scheduling, overflow support</li>
+        <li>Lead Generation: Qualified leads generation, lead qualification, live transfers</li>
+    </ul>
+</div>
+
+<!-- Industries Section -->
+<div class="container my-5">
+    <h2>Industries We Serve</h2>
+    <p>We serve a variety of industries, including e-commerce, logistics, property management, home services, SaaS, and subscription-based businesses.</p>
+</div>
+
+<!-- Contact Section -->
+<div class="container my-5">
+    <h2>Contact Us</h2>
+    <p>Email: info@inventumstrategies.com | Phone: (123) 456-7890</p>
+</div>
+
+<!-- Footer -->
+<footer class="bg-dark text-light py-3 text-center">
+    © 2024 Inventum Strategies. All rights reserved.
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
