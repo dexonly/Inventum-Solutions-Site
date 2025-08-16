@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Home – Inventum Strategies</title>
+  <link rel="icon" href="assets/images/logo.png" />
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- AOS for scroll animations -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <!-- FontAwesome for icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+  <style>
+    /* Ticker Tape Styles */
+    #ticker { background: var(--light-gray); }
+    .ticker-container {
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      padding-bottom: .5rem;
+      -webkit-overflow-scrolling: touch;
+    }
+    .ticker-container::-webkit-scrollbar { display: none; }
+    .ticker-item {
+      flex: 0 0 auto;
+      background: #fff;
+      color: var(--text-dark);
+      border: 1px solid var(--primary-orange);
+      border-radius: 6px;
+      padding: .75rem 1.5rem;
+      font-weight: 600;
+      white-space: nowrap;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+    :root {
+      --primary-orange: #ff9500;
+      --dark-gray: #333333;
+      --light-gray: #f8f9fa;
+      --text-dark: #1f2d3a;
+    }
+    body { font-family: system-ui, sans-serif; color: var(--text-dark); scroll-behavior: smooth; }
+    /* Navbar */
+    .navbar { background: var(--dark-gray); }
+    .nav-link { color: #fff !important; text-transform: uppercase; letter-spacing: .05em; }
+    .nav-link.active, .nav-link:hover { color: var(--primary-orange) !important; }
+    /* Offcanvas overrides */
+    .offcanvas { width: 250px; }
+    /* Hero */
+    .hero {
+      position: relative;
+      background: url('/assets/images/hero-banner.png') center/cover no-repeat;
+      height: 75vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: hsl(0, 0%, 100%);
+    }
+    .hero::before{
+      content:'';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.28)
+    }
+    @media(maxw-wideth: 576px) {
+      .hero{background-position: 40% center; height: 65hvh;}
+    }
+    .hero h1 {
+      font-size: 4rem;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+    .hero p {
+      font-size: 1.5rem;
+      font-weight: 500;
+      max-width: 800px;
+      margin: 0 auto 2rem;
+    }
+    .btn-hero {
+      background: var(--primary-orange);
+      color: #fff;
+      border: 2px solid var(--primary-orange);
+      border-radius: 8px;
+      padding: 1rem 1.5rem;  /* reduced horizontal padding */
+      font-size: 1.25rem;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-block;
+      transition: background .2s ease, transform .2s ease;
+    }
+    .btn-hero:hover {
+      background: #ffb347; /* a brighter orange tint for hover */
+      transform: scale(1.05);
+    }
+    .btn-hero:hover {
+      background: #ffb347; /* a brighter orange tint for hover */
+      transform: scale(1.05);
+    }
+    .btn-hero:hover {
+      background: rgba(255,149,0,0.4);
+    }
+    .hero::before { content:''; position:absolute; inset:0; background:rgba(0,0,0,0.5); }
+    .hero-content { position: relative; text-align: center; background:url('/assets/images/hero-banner.png')}
+    .hero h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+    .hero p {
+      font-size: 1.5rem;
+      font-weight: 500;
+      max-width: 800px;
+      margin: 0 auto 2rem;
+    }
+    .btn-primary, .btn-outline-light { border-radius:50px; padding: .38rem 1.5rem; }
+    /* Top Agencies Trust */
+    #trust { background: linear-gradient(135deg, rgba(255,149,0,0.2), rgba(255,149,0,0.05)); position: relative; overflow: hidden; }
+    #trust h2 { color: var(--primary-orange); font-size: 2.75rem; font-weight: 700; margin-bottom: 2rem; text-shadow: 1px 1px 2px rgba(0,0,0,0.1); }
+    #trust .trust-placeholder { width: 100%; height: 25vh; background: rgba(255,149,0,0.05); border: 2px dashed var(--primary-orange); border-radius: 8px; }
+    /* Services */
+    .services .card { border:none; transition: transform .3s, box-shadow .3s; }
+    .services .card:hover { transform:translateY(-10px); box-shadow:0 10px 30px rgba(0,0,0,0.1); }
+    /* Counters */
+    .stats { background: var(--light-gray); padding:3rem 0; }
+    .stats .counter { font-size:2.5rem; font-weight:700; }
+    /* Video section */
+    .video-thumb { position: relative; cursor: pointer; }
+    .video-thumb img { width:100%; border-radius:.5rem; }
+    .video-thumb .play-btn { position: absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:3rem; color:#fff; opacity:0.8; }
+    /* Testimonials */
+    .carousel-item { padding:2rem; }
+    .testimonial p { font-style:italic; }
+    .testimonial .author { font-weight:600; margin-top:1rem; }
+    /* Back to top */
+    #backToTop { position:fixed; bottom:2rem; right:2rem; display:none; background:var(--primary-orange); color:#fff; border:none; border-radius:50%; width:3rem; height:3rem; align-items:center; justify-content:center; z-index:1000; }
+    /* Newsletter */
+    .newsletter { background: var(--dark-gray); color:#fff; padding:2rem 0; }
+    .newsletter input { border-radius:50px; }
+    .newsletter .btn { border-radius:50px; }
+    /* Footer */
+    footer { background:#222; color:#bbb; padding:2rem 0; }
+    footer a { color:#bbb; }
+    /* Get Started CTA button styling */
+    .btn-cta {
+      background: var(--primary-orange);
+      color: #fff !important;
+      border: 2px solid var(--primary-orange);
+      border-radius: 8px;
+      padding: .65rem 1.05rem;  /* reduced horizontal padding */
+      font-size: 1.25rem;
+      font-weight: 600;
+      transition: background .2s ease, transform .2s ease;
+    }
+    .btn-cta:hover {
+      background: #ffb347;
+      transform: scale(1.05);
+    }
+    .btn-cta:hover {
+      background: #ffb347;
+      transform: scale(1.05);
+    }
+    /* Trust image: big, centered, responsive */
+    .trust-img{
+      max-width: 1100px; /* tweak as you like */
+      border-radius: .5rem;
+      box-shadow: 0 6px 24px rgba(0,0,0,.08);
+    }
+</style>
+</head>
+<body>
+  <!-- Navbar + Offcanvas -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#"><img src="assets/images/logo.png" height="40" alt="Inventum"/></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNav"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="testimonials.html">Testimonials</a></li>
+          <li class="nav-item"><a class="nav-link" href="newsletter.html">Newsletter</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        </ul>
+        <button class="btn btn-outline-light rounded-pill px-4" data-bs-toggle="modal" data-bs-target="#bookCallModal">Get Started</button>
+      </div>
+    </div>
+  </nav>
+  <div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="offcanvasNav"><div class="offcanvas-header"><h5 class="offcanvas-title">Menu</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button></div><div class="offcanvas-body"><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="#hero">Home</a></li><li class="nav-item"><a class="nav-link" href="#services">Services</a></li><li class="nav-item"><a class="nav-link" href="#stats">Stats</a></li><li class="nav-item"><a class="nav-link" href="#video">Video</a></li><li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li><li class="nav-item"><a class="nav-link" href="#newsletter">Newsletter</a></li></ul></div></div>
+  <div class="modal fade" id="bookCallModal" tabindex="-1"><div class="modal-dialog modal-lg modal-dialog-centered"><div class="modal-content"><form><div class="modal-header border-0"><h5 class="modal-title">Get Started</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="row g-3"><div class="col-md-6"><input type="text" class="form-control" placeholder="First Name" required /></div><div class="col-md-6"><input type="text" class="form-control" placeholder="Last Name" required /></div><div class="col-md-6"><input type="email" class="form-control" placeholder="Business Email" required /></div><div class="col-md-6"><input type="tel" class="form-control" placeholder="Phone" /></div><div class="col-md-6"><input type="text" class="form-control" placeholder="Agency Name" required /></div><div class="col-md-6"><input type="text" class="form-control" placeholder="License State(s)" required /></div><div class="col-md-6"><input type="text" class="form-control" placeholder="Specialties" required /></div><div class="col-md-6"><select class="form-select" required><option disabled selected>Monthly Budget</option><option>$0–$5,000</option><option>$5,000–$15,000</option><option>$15,000+</option></select></div></div></div><div class="modal-footer border-0"><button type="submit" class="btn btn-primary">Submit</button></div></form></div></div></div>
+
+  <!-- Hero -->
+  <section id="hero" class="hero" data-aos="fade-in">
+    <div class="container hero-content text-center">
+      
+      <h1 class="display-5 fw-bold">Outsource Smarter. Scale Faster.</h1>
+      <p class="lead">Industry-grade inbound customer service and B2B lead generation delivered through a dedicated remote team. Reduce costs, increase responsiveness, and grow your sales pipeline with Inventum Strategies.</p>
+      <a href="services.html" class="btn btn-hero btn-lg" style="font-size:1.25rem; padding:1rem 2rem;">Explore Services</a>
+        </div>
+  </section>
+    <!-- Ticker Tape Section -->
+  <section id="ticker" class="py-3 bg-light" data-aos="fade-up">
+    <div class="container overflow-hidden">
+      <div class="ticker-container d-flex align-items-center">
+        <!-- Repeat each ticker-item for insurance lines -->
+        <div class="ticker-item mx-2">ACA Enrollment</div>
+        <div class="ticker-item mx-2">Open Enrollment Period</div>
+        <div class="ticker-item mx-2">Special Enrollment Period</div>
+        <div class="ticker-item mx-2">U65 Private Insurance</div>
+        <div class="ticker-item mx-2">Supplemental Plans</div>
+      </div>
+    </div>
+<section id="trust" class="py-5" data-aos="fade-up">
+  <div class="container">
+    <h2 class="text-center mb-4">Top Agencies and Brokers Trust Inventum</h2>
+
+    <!-- Image row -->
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <img
+          src="assets/images/insurance.jpg"
+          class="img-fluid d-block mx-auto rounded shadow-sm"
+          alt="Insurance partners and coverage lines"
+          loading="lazy"
+        />
+      </div>
+    </div>
+
+    <!-- Centered blurb row -->
+    <div class="row justify-content-center mt-4">
+      <div class="col-xl-8 col-lg-9 text-center">
+        <h3 class="fw-semibold mb-3">Empowering Connections, Enhancing Lives</h3>
+        <p class="lead mb-0">
+          Inventum Strategies and our team of dedicated professionals work tirelessly to understand you,
+          your business and its needs, and the challenges you face so our team can better serve you.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <section id="services" class="py-5 services">
+    <div class="container">
+      <h2 class="text-center mb-4" data-aos="fade-up">Our Services</h2>
+      <div class="row g-4">
+        <div class="col-md-3" data-aos="fade-up" data-aos-delay="100"><div class="card p-4 text-center"><i class="fas fa-user-check fa-2x mb-3 icon"></i><h5>Qualification</h5><p class="small text-muted">Rigid verification process to ensure intent and fit of potential clients.</p></div></div>
+        <div class="col-md-3" data-aos="fade-up" data-aos-delay="200"><div class="card p-4 text-center"><i class="fas fa-phone fa-2x mb-3 icon"></i><h5>Warm Transfers</h5><p class="small text-muted">Seemless and effective live lead handoffs. Hit the ground running.</p></div></div>
+        <div class="col-md-3" data-aos="fade-up" data-aos-delay="300"><div class="card p-4 text-center"><i class="fas fa-calendar-check fa-2x mb-3 icon"></i><h5>Appointments</h5><p class="small text-muted">Schedule demos or appointments for your team. Spend more time selling.</p></div></div>
+        <div class="col-md-3" data-aos="fade-up" data-aos-delay="400"><div class="card p-4 text-center"><i class="fas fa-chart-line fa-2x mb-3 icon"></i><h5>Reporting</h5><p class="small text-muted">Real-time analytics and conversion data. Track how our performance affects your performance.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Counter -->
+  <section id="stats" class="stats" data-aos="fade-up">
+    <div class="container text-center">
+      <div class="row">
+        <div class="col-md-4"><div class="counter" data-count="35">0</div><p>Conversion Uplift (%)</p></div>
+        <div class="col-md-4"><div class="counter" data-count="90">0</div><p>Qualification Accuracy (%). Our leads are qualified, verified</p></div>
+        <div class="col-md-4"><div class="counter" data-count="24">0</div><p>24/7 Full-Time Support</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Video Lightbox -->
+  <section id="video" class="py-5 text-center" data-aos="zoom-in">
+    <div class="container">
+      <div class="video-thumb mx-auto" style="max-width:600px;" data-bs-toggle="modal" data-bs-target="#videoModal">
+        <img src="/assets/images/video-thumb.jpg" alt="Intro Video" /> <!-- STOCK IMAGE: video-thumb.jpg -->
+        <i class="fas fa-play play-btn"></i>
+      </div>
+    </div>
+  </section>
+
+  <!-- Video Modal -->
+  <div class="modal fade" id="videoModal" tabindex="-1"><div class="modal-dialog modal-xl modal-dialog-centered"><div class="modal-content bg-transparent border-0"><div class="modal-body p-0"><div class="ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/VIDEO_ID?autoplay=1" allowfullscreen></iframe></div></div></div></div></div>
+
+  <!-- Testimonials -->
+  <section id="testimonials" class="py-5 bg-light" data-aos="fade-up">
+    <div class="container text-center">
+      <h2 class="mb-4">What Clients Say</h2>
+      <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active"><div class="testimonial mx-auto" style="max-width:600px;"><p>“I used Inventum's lead generation service, and now I can't work without it. Leads converted 30% faster than before.”</p><div class="author">— Sarah Mitchell</div></div></div>
+          <div class="carousel-item"><div class="testimonial mx-auto" style="max-width:600px;"><p>“I worked with Ali on a number of different leads, on every one the handoff was seamless, which meant more time closing for me.”</p><div class="author">— James Ortiz</div></div></div>
+          <div class="carousel-item"><div class="testimonial mx-auto" style="max-width:600px;"><p>“Inventum's services were as-advertised, I was pleased with the data transparency and integrity. Insightful dashboards for improved performance.”</p><div class="author">— Tanya Brooks</div></div></div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
+        <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter Signup -->
+  <section id="newsletter" class="newsletter text-center" data-aos="fade-in">
+    <div class="container">
+      <h3>Stay Updated</h3>
+      <p>Get insights and tips delivered to your inbox.</p>
+      <form class="row g-2 justify-content-center">
+        <div class="col-md-4"><input type="email" class="form-control" placeholder="Enter email" required /></div>
+        <div class="col-md-2"><button class="btn btn-primary w-100" type="submit">Subscribe</button></div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Back to Top -->
+  <button id="backToTop" aria-label="Back to top"><i class="fas fa-chevron-up"></i></button>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container text-center">
+      <div class="row py-3">
+        <div class="col-md-4"><img src="assets/images/logo-white.png" alt="" height="30" /></div>
+        <div class="col-md-4"><a href="#">Privacy Policy</a> | <a href="#">Terms</a></div>
+        <div class="col-md-4"><small>&copy; 2025 Inventum Strategies. All Rights Reserved.</small></div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Book Call Modal -->
+  <div class="modal fade" id="bookCallModal" tabindex="-1"><div class="modal-dialog modal-lg modal-dialog-centered"><div class="modal-content"><form><div class="modal-header border-0"><h5 class="modal-title">Get Started</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="row g-3"><div class="col-md-6"><input type="text" class="form-control" placeholder="First Name" required /></div><div class="col-md-6"><input type="text" class="form-control" placeholder="Last Name" required /></div><div class="col-md-6"><input type="email" class="form-control" placeholder="Business Email" required /></div><div class="col-md-6"><input type="tel" class="form-control" placeholder="Phone" /></div><div class="col-md-6"><input type="text" class="form-control" placeholder="Agency Name" required /></div><div class="col-md-6"><input type="text" class="form-control" placeholder="License State(s)" required /></div><div class="col-md-6"><input type="text" class="form-control" placeholder="Specialties" required /></div><div class="col-md-6"><select class="form-select" required><option disabled selected>Monthly Budget</option><option>$0–$5k</option><option>$5k–$15k</option><option>$15k+</option></select></div></div></div><div class="modal-footer border-0"><button type="submit" class="btn btn-primary">Submit</button></div></form></div></div></div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 800, once: true });
+    // Counter animation
+    const counters = document.querySelectorAll('.counter');
+    const options = { root:null, threshold:0.5 };
+    const callback = (entries, observer) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) {
+          const el = entry.target;
+          const countTo = +el.getAttribute('data-count');
+          let start = 0;
+          const step = Math.ceil(countTo / 100);
+          const interval = setInterval(() => {
+            start += step;
+            if(start >= countTo) { el.textContent = countTo; clearInterval(interval); }
+            else el.textContent = start;
+          }, 20);
+          observer.unobserve(el);
+        }
+      });
+    };
+    const observer = new IntersectionObserver(callback, options);
+    counters.forEach(c => observer.observe(c));
+    // Back to top
+    const btn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => { btn.style.display = window.scrollY > 400 ? 'flex' : 'none'; });
+    btn.addEventListener('click', () => window.scrollTo({ top:0, behavior:'smooth' }));
+  </script>
+</body>
+</html>

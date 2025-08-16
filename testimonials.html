@@ -1,0 +1,123 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Testimonials – Inventum Strategies</title>
+  <link rel="icon" href="assets/images/logo.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <style>
+    :root {
+      --primary-orange: #ff9500;
+      --dark-gray: #333333;
+      --light-gray: #f8f9fa;
+      --text-dark: #1f2d3a;
+    }    body { font-family: system-ui, sans-serif; color: var(--text); }
+ /* Navbar */
+    .navbar { background: var(--dark-gray); }
+    .nav-link { color: #fff !important; text-transform: uppercase; letter-spacing: .05em; }
+    .nav-link.active, .nav-link:hover { color: var(--primary-orange) !important; }    .testimonial-card { max-width: 600px; margin: 0 auto; padding: 2rem; background: #fff; border-radius: 8px; }
+    .star { color: var(--primary); margin-right: 0.25rem; }
+    .client-logo { max-height: 50px; margin: 0 1rem; filter: grayscale(80%); }
+    .btn-cta {
+      background: var(--primary-orange);
+      color: #fff !important;
+      border: 2px solid var(--primary-orange);
+      border-radius: 8px;
+      padding: .65rem 1.05rem;  /* reduced horizontal padding */
+      font-size: 1.25rem;
+      font-weight: 600;
+      transition: background .2s ease, transform .2s ease;
+    }
+    .btn-cta:hover {
+      background: #ffb347;
+      transform: scale(1.05);
+    }
+    .btn-cta:hover {
+      background: #ffb347;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html"><img src="assets/images/logo.png" height="40" alt="Inventum" /></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+          <li class="nav-item"><a class="nav-link active" href="testimonials.html">Testimonials</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="newsletter.html">Newsletter</a></li>
+        </ul>
+        <button class="btn btn-outline-light rounded-pill px-4" data-bs-toggle="modal" data-bs-target="#bookCallModal">Get Started</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="pt-5 mt-5">
+    <section class="py-5 text-center bg-light" data-aos="fade-up">
+      <h2 class="mb-4">Client Success Stories</h2>
+      <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <!-- Testimonial Slides -->
+          <div class="carousel-item active">
+            <div class="testimonial-card">
+              <p>“Inventum’s tailored approach delivered a 50% increase in deposit bookings in just two months. Their reporting keeps us agile.”</p>
+              <div>
+                <i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i>
+                <i class="fas fa-star star"></i><i class="fas fa-star-half-alt star"></i>
+              </div>
+              <small>— Alex Johnson, COO at SecureBank</small>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="testimonial-card">
+              <p>“The onboarding was seamless and the team felt like an extension of ours. Lead quality is unmatched.”</p>
+              <div>
+                <i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i>
+                <i class="fas fa-star star"></i><i class="fas fa-star star"></i>
+              </div>
+              <small>— Maya Patel, Marketing Director at HealthNet</small>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="testimonial-card">
+              <p>“We saw a 3x lift in qualified meetings after partnering with Inventum. Their analytics dashboard is intuitive and powerful.”</p>
+              <div>
+                <i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i>
+                <i class="fas fa-star-half-alt star"></i><i class="fas fa-star star"></i>
+              </div>
+              <small>— Carlos Mendes, Head of Sales at QuickLoan</small>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </button>
+      </div>
+
+      <!-- Client Logos -->
+      <div class="d-flex justify-content-center align-items-center py-4 flex-wrap" data-aos="fade-up">
+        <img src="assets/images/logo1.png" alt="Client Logo" class="client-logo" />
+        <img src="assets/images/logo2.png" alt="Client Logo" class="client-logo" />
+        <img src="assets/images/logo3.png" alt="Client Logo" class="client-logo" />
+        <img src="assets/images/logo4.png" alt="Client Logo" class="client-logo" />
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-dark text-center text-white py-4">
+    <small>&copy; 2025 Inventum Strategies</small>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>AOS.init({ duration: 700, once: true });</script>
+</body>
+</html>

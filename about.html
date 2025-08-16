@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html 
+lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About – Inventum Strategies</title>
+  <link rel="icon" href="assets/images/logo.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <style>
+    :root { --primary: #ff9500; --dark: #333; --light: #f8f9fa; --text: #1f2d3a; }
+    body { font-family: system-ui, sans-serif; color: var(--text); }
+    .navbar { background: var(--dark); }
+    .value-icon { font-size: 2rem; color: var(--primary); }
+    .timeline { list-style: none; padding-left: 1rem; position: relative; }
+    .timeline::before { content: ''; position: absolute; left: 0.75rem; top: 0; bottom: 0; width: 2px; background: var(--primary); }
+    .timeline-item { position: relative; margin-bottom: 2rem; padding-left: 2rem; }
+    .timeline-item::before { content: ''; position: absolute; left: 0; top: 0.5rem; width: 12px; height: 12px; background: var(--primary); border-radius: 50%; }
+    .btn-cta {
+      background: var(--primary-orange);
+      color: #fff !important;
+      border: 2px solid var(--primary-orange);
+      border-radius: 8px;
+      padding: .65rem 1.05rem;  /* reduced horizontal padding */
+      font-size: 1.25rem;
+      font-weight: 600;
+      transition: background .2s ease, transform .2s ease;
+    }
+    .btn-cta:hover {
+      background: #ffb347;
+      transform: scale(1.05);
+    }
+    .btn-cta:hover {
+      background: #ffb347;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html"><img src="assets/images/logo.png" height="40" alt="Inventum" /></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="testimonials.html">Testimonials</a></li>
+          <li class="nav-item"><a class="nav-link" href="newsletter.html">Newsletter</a></li>
+          <li class="nav-item"><a class="nav-link active" href="about.html">About</a></li>
+        </ul>
+        <button class="btn btn-outline-light rounded-pill px-4" data-bs-toggle="modal" data-bs-target="#bookCallModal">Get Started</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="pt-5 mt-5">
+    <!-- Intro -->
+    <section class="text-center py-5 bg-light" data-aos="fade-up">
+      <h1>About Inventum Strategies</h1>
+      <p class="lead mx-auto" style="max-width:600px;">
+        Founded in 2021, Inventum Strategies has grown into a premier remote solutions provider, supporting over 50 clients across finance, insurance, and healthcare.
+      </p>
+    </section>
+    <div class="modal fade" id="bookCallModal" tabindex="-1"><div class="modal-dialog modal-lg modal-dialog-centered"><div class="modal-content"><form><div class="modal-header border-0"><h5 class="modal-title">Get Started</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="row g-3"><div class="col-md-6"><input type="text" class="form-control" placeholder="First Name" required /></div><div class="col-md-6"><input type="text" class="form-control" placeholder="Last Name" required /></div><div class="col-md-6"><input type="email" class="form-control" placeholder="Business Email" required /></div><div class="col-md-6"><input type="tel" class="form-control" placeholder="Phone" /></div><div class="col-md-6"><input type="text" class="form-control" placeholder="Agency Name" required /></div><div class="col-md-6"><input type="text" class="form-control" placeholder="License State(s)" required /></div><div class="col-md-6"><input type="text" class="form-control" placeholder="Specialties" required /></div><div class="col-md-6"><select class="form-select" required><option disabled selected>Monthly Budget</option><option>$0–$5,000</option><option>$5,000k–$15,000</option><option>$15,000+</option></select></div></div></div><div class="modal-footer border-0"><button type="submit" class="btn btn-primary">Submit</button></div></form></div></div></div>
+    <!-- Values -->
+    <section class="container py-5" data-aos="fade-right">
+      <h2 class="mb-4 text-center">Our Core Values</h2>
+      <div class="row g-4">
+        <div class="col-md-4 text-center">
+          <i class="fas fa-handshake value-icon mb-2"></i>
+          <h6>Integrity</h6>
+          <p>Transparent processes and honest communication in every partnership. Our clients and specific projects change over time, our values do not.</p>
+        </div>
+        <div class="col-md-4 text-center">
+          <i class="fas fa-lightbulb value-icon mb-2"></i>
+          <h6>Innovation</h6>
+          <p>Continuous improvement through data-driven insights and creative solutions. This is an imperfect science, but making it better is our mission. </p>
+        </div>
+        <div class="col-md-4 text-center">
+          <i class="fas fa-lightbulb value-icon mb-2"></i>
+          <h6>Collaboration</h6>
+          <p>We integrate seamlessly as an extension of your team, focused on shared goals. Your goals are our goals and we work to solve your problems.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="container py-5" data-aos="fade-left">
+      <h2 class="mb-4 text-center">Our Journey</h2>
+      <ul class="timeline">
+        <li class="timeline-item">
+          <h6>2021: Founded</h6>
+          <p>Launch with a vision to redefine remote customer engagement.</p>
+        </li>
+        <li class="timeline-item">
+          <h6>2022: 10 Clients</h6>
+          <p>Expanded into finance and healthcare verticals, serving 10 mid-market clients.</p>
+        </li>
+        <li class="timeline-item">
+          <h6>2023: Scale to 50</h6>
+          <p>Reached 50+ clients globally, building a 24/7 remote workforce.</p>
+        </li>
+        <li class="timeline-item">
+          <h6>2024: Analytics Launch</h6>
+          <p>Rolled out proprietary analytics platform for real-time performance tracking.</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Careers CTA -->
+    <section class="bg-light text-center py-5" data-aos="fade-up">
+      <h2>Join Our Team</h2>
+      <p>We're always looking for talented professionals to join our remote workforce. <a href="#">View Open Positions</a>.</p>
+    </section>
+  </main>
+
+  <footer class="bg-dark text-center text-white py-4">
+    <small>&copy; 2025 Inventum Strategies. All Rights Reserved.</small>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>AOS.init({ duration: 700, once: true });</script>
+</body>
+</html>
